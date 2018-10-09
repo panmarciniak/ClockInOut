@@ -1,0 +1,35 @@
+﻿@model ClockInApp.Models.Employee
+@{
+    ViewBag.Title = "Home Page";
+}
+<h2>ClockIn</h2>
+
+<br /><br />
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    @Html.TextBoxFor(m => m.EmployeeId, new{required = "required"})<br /><br />
+    <h4>Your last log: </h4>
+    <h3>@Html.DisplayFor(m => m.LastLog)</h3>
+    <input type="submit" name="command" value="Clock In" />
+    <input type="submit" name="command" value="Clock Out" />
+}
+
+<br />
+<br />
+<h2>COUNT YOUR HOURS</h2>
+@using (Html.BeginForm("HoursWorkedInPeriod", "Home", FormMethod.Post))
+{
+    <h3>Your Id</h3>
+    @Html.TextBoxFor(m => m.EmployeeId, new { required = "required" })<br />
+    <h3>From</h3>
+    @Html.TextBoxFor(m => m.PeriodStart, new { @class = "datepicker", autocomplete = "off" })<br />
+    <h3>To</h3>
+    @Html.TextBoxFor(m => m.PeriodEnd , new { @class = "datepicker", autocomplete = "off" })<br /><br />
+    <h3>@Html.DisplayFor(m => m.HoursWorkedInGivenPeriod)</h3><br /><br />
+    <input type="submit" value="Submit" />
+}
+<h3>
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+</h3>
+
+

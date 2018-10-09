@@ -1,0 +1,18 @@
+﻿@model ClockInApp.Models.Employee
+
+@{
+    ViewBag.Title = "ClockIn";
+}
+
+<h2>ClockIn</h2>
+
+@using(Html.BeginForm(FormMethod.Post)){
+    <form>
+        @Html.DisplayFor(m => m.LogInTime)<br />
+        @Html.DisplayFor(m => m.LogOutTime)<br />
+        @Html.DisplayFor(m => m.EmployeeId)<br />
+        <input type="submit" value="ok" />
+    </form>
+   
+}
+
